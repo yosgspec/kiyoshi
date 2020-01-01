@@ -6,14 +6,13 @@ import std.windows.charset;
 import core.thread;
 
 void main(){
-	auto rand=Random(unpredictableSeed);
 	immutable ptn=["ズン","ドコ"];
 	immutable fin="キ・ヨ・シ!";
 	auto log=["","","","",""];
 	immutable ans="ズンズンズンズンドコ";
 
 	for(;;){
-		auto last=ptn[uniform(0,ptn.length,rand)];
+		auto last=ptn[uniform(0,ptn.length)];
 		write(last.toMBSz.to!string);stdout.flush();
 		log.popFront();
 		log~=last;
