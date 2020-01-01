@@ -1,0 +1,34 @@
+#runtime "hsp3cl"
+#cmpopt varinit 1
+randomize
+
+#module zundoko
+	#defcfunc join array lst
+		s=""
+		foreach lst: s+=lst.cnt: loop
+	return s
+
+	#deffunc shiftPush array lst,str add
+		repeat length(lst)-1
+			lst(cnt)=lst(cnt+1)
+		loop
+		lst(length(lst)-1)=add
+	return
+
+	#deffunc main
+		ptn="ズン","ドコ"
+		fin="キ・ヨ・シ!"
+		log="","","","",""
+		ans="ズンズンズンズンドコ"
+
+		repeat
+			last=ptn(rnd(length(ptn)))
+			mes last,1
+			shiftPush log,last
+			if ans=join(log): break
+			wait 20
+		loop
+		mes fin
+	return
+#global
+main
